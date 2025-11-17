@@ -2,8 +2,9 @@ class Employee:
    def __init__(self, name, id):
        self.name = name
        self.id = id
-   def get_info(self):
+   def get_info(self): 
        return f'Сотрудник: {self.name}, ID: {self.id}'
+
 class Manager(Employee):
    def __init__(self, name, id, department):
         Employee.__init__(self, name, id)
@@ -12,6 +13,7 @@ class Manager(Employee):
         return f"{self.name} управляет проектом в отделе '{self.department}'"
    def get_info(self):
         return f'Менеджер: {self.name}, ID: {self.id}, Отдел: {self.department}'
+
 class Technician(Employee):
    def __init__(self, name, id, specialization):
        Employee.__init__(self, name, id)
@@ -20,6 +22,7 @@ class Technician(Employee):
        return f'{self.name} выполняет обслуживание: {self.specialization}'
    def get_info(self):
        return f'Техник: {self.name}, ID: {self.id}, Специализация: {self.specialization}'
+
 class TechManager(Manager, Technician):
     def __init__(self, name, id, department, specialization):
         Manager.__init__(self, name, id, department)
@@ -41,10 +44,12 @@ class TechManager(Manager, Technician):
 emp = Employee('Иван Ермаков', 10)
 mgr = Manager('Мария Балюра', 11, 'Разработка')
 tech = Technician('Андрей Симонов', 12, 'Электрика')
+
 tech_mgr = TechManager('Сергей Кузнецов', 20, 'ИТ', 'Сети и связи')
 tech_mgr.add_employee(emp)
 tech_mgr.add_employee(mgr)
 tech_mgr.add_employee(tech)
+
 print(emp.get_info())
 print(mgr.get_info())
 print(tech.get_info())
